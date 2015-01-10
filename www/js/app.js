@@ -67,7 +67,23 @@ var app = {
                  });
 		console.log('shoudgallery');
 	},
-
+	listmembers: function(type) {
+		param = type.replace(/#/,'')
+		console.log('in list members for ' + param);
+		var rootUrl = 'http://54.145.179.160/sdjymapi/getmembers.php';
+		 $.ajax({
+                        type: 'GET',
+                        url: rootUrl + '?type=' + param,
+                        dataType: 'json',
+			success: function(data){
+                                console.log(data);
+				$("#sdjymmemberlist").tmpl(data).appendTo("#placeholder");
+                        },
+                        error: function(error){
+                                console.log(error);
+                        }
+		});
+	},
 	getSinglePost: function(postID) {
 		console.log('getSinglePost');
 
@@ -196,6 +212,52 @@ var app = {
     			'<ul class="youtube-videogallery">' +
     			'</ul>' +
 			'</div>';
+		var membertabpage =
+			'  <div data-role="main" style="margin:auto;max-width:600px;overflow:scroll;" class="ui-content">  <div>' +
+                '<a href="#listmembers-all"><img id="mallfixed" src="img/memberall.jpg" alt="All Members" width="110" height="110"/> </a>' +
+                '<a href="#listmembers-kk"><img id="kkfixed" src="img/kkmember.jpg" alt="KK Members" width="110" height="110"/> </a>' +
+                '<a href="#listmembers-board"><img id="bfixed" src="img/bmember.jpg" alt="Board Members" width="110" height="110"/> </a>' +
+			'  </div></div> '+
+        '<script type="text/javascript">'  +
+                '$(function() {' +
+                        "$('#mallfixed').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                        "$('#bfixed').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                        "$('#kkfixed').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                "});  </script>";
+		var memberallpage =
+'<div data-role="page" id="pageone">' +
+'  <div data-role="main" class="ui-content">' +
+'<ul id="menu">' +
+'<table border="1" style="margin:"0 auto",border-collapse: separate; border-spacing: 5px"><tr>' +
+' <td style="padding: 5px;"><li><a href="html_tables.asp">Tables</a></li></td>' +
+' <td><li><a href="html_lists.asp">Lists</a></li></td>' +
+' <td><li><a href="html_blocks.asp">Blocks</a></li></td></tr>' +
+' <tr><td><li><a href="html_classes.asp">Classes</a></li></td>' +
+' <td><li><a href="html_classes.asp">Classes</a></li></td></tr>' +
+'</table></ul>' +
+'  </div>' +
+'</div> ';
+		var listmemberpage = 
+			'  <div data-role="main" style="margin:auto;max-width:600px;overflow:scroll;" class="ui-content"><table cellspacing="0" border="0" id="placeholder"  style="width:100%;border-collapse:collapse;"></table></div>' +
+        '<script type="text/javascript">'  +
+                '$(function() {' +
+                        "$('#member31').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                        "$('#member54').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                        "$('#member58').capty({" +
+                                "animation:      'fixed'" +
+                        "});" +
+                "});  </script>";
+	
 		var page,
         hash = window.location.hash;
         console.log('real hash is ' + hash);
@@ -214,7 +276,24 @@ app.init();
 		page = videopage;
    		slider.slidePage($(page));
 		app.video();
-	}	
+	}
+	else if (hash == '#memberstab') {
+		console.log('hash is members' + hash);
+		page = membertabpage;
+   		slider.slidePage($(page));
+	}
+	else if (hash == '#memberall') {
+		console.log('hash is members' + hash);
+		page = memberallpage;
+   		slider.slidePage($(page));
+		app.memberlist();
+	}
+	else if (hash.match(/^#listmembers/)) {
+		console.log('hash is members' + hash);
+		page = listmemberpage;
+  		slider.slidePage($(page));
+		app.listmembers(hash);
+	}
         else if (hash.match(/nanogallery/)) {
         	console.log('hash match gallery' + hash);
     		app.init();

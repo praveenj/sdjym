@@ -140,4 +140,6 @@ color: #781414;
     -ms-transform: translateX(0%);
     transform: translateX(0%);
   }
+.ui-button-icon-primary {
+        background: url('/my-custom-trash-image.png');
 }

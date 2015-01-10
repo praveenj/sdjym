@@ -24,8 +24,37 @@
     <link rel="stylesheet" href="css/test.css" type="text/css"/>
     <link rel="stylesheet" href="css/colorbox.css" />
     <script src="js/jquery.colorbox.js"></script>
+                <link type="text/css" rel="stylesheet" href="css/jquery.capty.css"/>
+                <script type="text/javascript" src="js/jquery.capty.min.js"></script>
+<script type="text/javascript" src="js/jquery.tmpl.min.js"></script>
 
+<style>
+ul#menu {
+    padding: 0;
+}
 
+ul#menu li {
+    display: inline;
+}
+
+ul#menu li a {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+    font-size: 15px;
+}
+
+ul#menu li a:hover {
+    background-color: orange;
+}
+</style>
+<script id="sdjymmemberlist" type="text/x-jquery-tmpl"><tr><td><div style="float : left; width :400px; margin-left:10px; color:Black; text-align:center;  border-radius:8px; background-color:#E3e2e2; height:34px; font-family:Verdana; font-size:12px; font-weight:bold;  border:solid 1px #ccc;">
+
+<div style="float : left; padding-top:10px; text-align:center; width:100%;">
+<a href="http://54.145.179.160/sdjym/members_photos/image${id}.png">${name}</a></div></div></td></tr> 
+                </script>
   </head>
   <body>
   
@@ -44,6 +73,9 @@
             </li>
             <li class="topcoat-list__item pageNav">
               <a class="sdjymmenu" href="#videos">Videos</a>
+            </li>
+            <li class="topcoat-list__item pageNav">
+              <a class="sdjymmenu" href="#memberstab">Members</a>
             </li>
             <li class="topcoat-list__item pageNav">
               <a class="sdjymmenu" href="#home">About US</a>
@@ -106,11 +138,34 @@
       apiUrl: 'https://gdata.youtube.com/feeds/api/playlists/PLj_m45CFFM8mPZOVNpuhjBtPW0niKQvBU?start-index=1&alt=json&v=2',plugin:'colorbox'} );
 //	        $("ul.youtube-videogallery").youtubeVideoGallery( {urlEmbed: 'http://www.youtube.com/embed/videoseries?list=PL-yWfPlk9tNnzfd0-SN5mLWuFllprNpLK',plugin:'colorbox'} );
 	    });
-
-//                $(document).ready(function () {
+//		$(document).ready(function() {
+	//		hash = window.location.hash;
+//			$.ajax({
+//
+//				url: "http://54.145.179.160/sdjymapi/getmembers.php?type=" + hash,
+//
+//				data: "format=json",
+//
+//				dataType: "json",
+//
+//				success: function(data) {
+//
+//					$("#sdjymmemberlist").tmpl(data).appendTo("#placeholder");
+//
+//				}
+//
+//			});
+//
+//		});
 	</script>
-    
     <!-- When in Phonegap folder uncomment this
     <script type="text/javascript" src="phonegap.js"></script>  -->
   </body>
+<script type="text/javascript">
+$(function() {
+           $('#member31').capty({
+                animation:      'fixed'
+            });
+});   
+</script> 
 </html>
