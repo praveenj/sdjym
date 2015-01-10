@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Demo App</title>
+    <link rel="stylesheet" href="css/topcoat-mobile-dark.css">
+    <link rel="stylesheet" href="css/pageslider.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/main.css">
+
+<!-- Add jQuery library (MANDATORY) -->
+<!-- Add nanoGALLERY plugin files (MANDATORY) -->
+<link href="css/nanogallery.css" rel="stylesheet" type="text/css">
+        <link href="css/themes/clean/nanogallery_clean.css" rel="stylesheet" type="text/css">
+        <!-- nanoGALLERY - css file for the theme 'light'                                                                         -->
+        <link href="css/themes/light/nanogallery_light.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.nanogallery.js"></script>
+<script src="js/jquery.youtubevideogallery.js"></script>
+<link rel="stylesheet" href="css/youtube-video-gallery.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/test.css" type="text/css"/>
+    <link rel="stylesheet" href="css/colorbox.css" />
+    <script src="js/jquery.colorbox.js"></script>
+
+
+  </head>
+  <body>
+  
+<div class="app js-app">
+
+    <div class="app-menu">
+
+        <div class="topcoat-list">
+          <h3 class="topcoat-list__header"></h3>
+          <ul class="topcoat-list__container">
+            <li class="topcoat-list__item pageNav">
+              <a class="sdjymmenu" href="#home">Home</a>
+            </li>
+            <li class="topcoat-list__item pageNav">
+              <a class="sdjymmenu" href="#gallery">Gallery</a>
+            </li>
+            <li class="topcoat-list__item pageNav">
+              <a class="sdjymmenu" href="#videos">Videos</a>
+            </li>
+            <li class="topcoat-list__item pageNav">
+              <a class="sdjymmenu" href="#home">About US</a>
+            </li>
+          </ul>
+        </div>
+
+    </div>
+
+    <div class="app-container js-app-container">
+
+    <div class="topcoat-navigation-bar">
+        <div class="topcoat-navigation-bar__item left quarter">
+            <a class="topcoat-icon-button--quiet js-menu-button"> 
+              <span class="topcoat-icon topcoat-icon--menu-stack"></span> 
+            </a>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+            <h1 class="topcoat-navigation-bar__title">SDJYM</h1>
+        </div>
+        <div class="topcoat-navigation-bar__item right quarter">
+            <a class="topcoat-icon-button--quiet"> 
+              <span class="topcoat-icon topcoat-icon--edit"></span>
+            </a>
+        </div>
+    </div>
+    <div id="container"></div>
+</div>
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <script type="text/javascript" src="js/pageslider.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+	<script>
+//		$(document).bind( 'docAndHeadJSReady',function(){
+		 $(document).ready(function () {
+                     jQuery("#nanogallery4").empty().nanoGallery({userID:'129835201@N06',kind:'flickr',thumbnailWidth:'auto',thumbnailHeight:160,  //110,
+                        viewerDisplayLogo:true,
+                        locationHash:true,
+        //photoset:'none',//'72157594299597591',
+                                //thumbnailDisplayInterval:0,
+                                //thumbnailDisplayTransition:false,
+                                thumbnailHoverEffect:[{'name':'labelSlideUp','duration':300},{'name':'borderDarker'}],
+                                //thumbnailLabel:{display:true,position:'onBottom',descriptionMaxLength:200},
+                                thumbnailLabel:{display:true,position:'overImageOnBottom',descriptionMaxLength:50},
+                        touchAnimation:true,
+                        touchAutoOpenDelay:-1,
+                        thumbnailGutterWidth:10,
+                        thumbnailGutterHeight:10,
+                        thumbnailLazyLoad:true,
+                        theme:'clean',
+                        colorScheme:'darkRed',
+                        slideshowDelay:1000, //default:3000
+                        viewerToolbar: {display:false}, //default:true
+                        level1: { thumbnailWidth: 200, thumbnailHeight: 120 }
+                        });
+                        console.log('galleryready');
+                 });
+	    $(document).ready(function(){
+	        $("ul.youtube-videogallery").youtubeVideoGallery( {apiFallbackUrl: 'https://www.youtube.com/results?search_query=sdjym',
+      apiUrl: 'https://gdata.youtube.com/feeds/api/playlists/PLj_m45CFFM8mPZOVNpuhjBtPW0niKQvBU?start-index=1&alt=json&v=2',plugin:'colorbox'} );
+//	        $("ul.youtube-videogallery").youtubeVideoGallery( {urlEmbed: 'http://www.youtube.com/embed/videoseries?list=PL-yWfPlk9tNnzfd0-SN5mLWuFllprNpLK',plugin:'colorbox'} );
+	    });
+
+//                $(document).ready(function () {
+	</script>
+    
+    <!-- When in Phonegap folder uncomment this
+    <script type="text/javascript" src="phonegap.js"></script>  -->
+  </body>
+</html>
